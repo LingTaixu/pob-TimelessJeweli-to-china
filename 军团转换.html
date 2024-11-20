@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>URL转换</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .container {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+      input[type='text'] {
+        padding: 10px;
+        font-size: 14px;
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      button {
+        padding: 10px;
+        font-size: 14px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        max-width: 500px;
+        margin: 0 auto;
+      }
+      button:hover {
+        background-color: #45a049;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <input id="inputUrl" type="text" placeholder="请输入从pob复制的" />
+      <button onclick="convertUrl()">转为国服</button>
+      <input id="outputUrl" type="text" placeholder="转换后的URL" readonly />
+    </div>
+
+    <script>
+      function convertUrl() {
+        const inputUrl = document.getElementById('inputUrl').value;
+        const outputUrlField = document.getElementById('outputUrl');
+
+        // 检查 URL 是否包含指定字符串
+        if (
+          inputUrl.includes(
+            'https://www.pathofexile.com/trade/search/Settlers/?'
+          )
+        ) {
+          const convertedUrl = inputUrl.replace(
+            'https://www.pathofexile.com/trade/search/Settlers/?',
+            'https://poe.game.qq.com/trade/search/S26%E8%B5%9B%E5%AD%A3/?'
+          );
+          outputUrlField.value = convertedUrl; // 显示转换后的 URL
+        } else {
+          outputUrlField.value = '没有找到目标字符串。'; // 显示未找到提示
+        }
+      }
+    </script>
+  </body>
+</html>
